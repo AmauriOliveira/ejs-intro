@@ -1,0 +1,46 @@
+<% const lastName="Oliveira" ; console.log('a'); function foo() { return 'bar' ;
+} %> <%- foo() -%> <%= foo() %>
+<h1>Hello <%= nome%> <%=lastName%></h1>
+
+<% const name="Amauri" ; const htmlString=`
+<p>aqui é um paragrafo</p>
+`;%>
+<h1>Hello <%= name%></h1>
+<%- htmlString%> <% const people =[ {name:'Fernanda', age: 25}, {name:'José',
+age:40}, {name:'Raquel',age:15}, ]; %>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Age</th>
+	</tr>
+	<% for( let index = 0; index < people.length; index++ ) { %>
+	<tr>
+		<td><%= people[index].name %></td>
+		<td><%= people[index].age %></td>
+	</tr>
+	<% } %>
+</table>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Age</th>
+	</tr>
+	<% people.forEach(person => { %>
+	<tr>
+		<td><%= person.name %></td>
+		<td><%= person.age %></td>
+	</tr>
+	<% }); %>
+</table>
+
+<% let number = Math.floor(Math.random()*50);%>
+<br />
+<% if (number < 25) { %>
+<p> <%= number %> é maior que 25</p>
+<% } else if (number > 25) { %>
+<p><%= number %> é menor que 25</p>
+<% } else { %>
+<p>É o 25</p>
+<% } %>
