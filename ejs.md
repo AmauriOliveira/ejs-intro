@@ -2,32 +2,80 @@
 
 [TOC]
 
+## Instalação
+
+Instalação dos packages.
+
+```bash
+yarn add cors ejs express express-ejs-layouts
+# Opcional
+yarn add -D nodemon
+```
+
+Arquivo de entrada do servidor express.
+
+```javascript
+const express = require('express');
+const cors = require('cors');
+const expressLayout = require('express-ejs-layouts');
+const path = require('path');
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+app.use(expressLayout);
+// o parâmetro do path é o nome da pasta onde estão as views, pode ser qualquer nome
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// render recebe 3 parâmetro,
+// nome do arquivo ou view, um objeto tipo any e um callback
+app.get('/', (request, response) =>
+	response.render('index', { nome: 'Amauri' })
+);
+
+app.get('/about', (request, response) => response.render('about'));
+
+app.listen(process.env.PORT || '3000', () => console.log('🔥🚀'));
+```
+
+> opcional, com a config abaixo ele fica utilizando a view com extensão **Html**
+
+```javascript
+app.set('views', path.join(__dirname, 'views'));
+// caso for usar .html em vez de .ejs
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('view engine', 'ejs');
+```
+
 ## Dicas
 
-sempre feche um comando javascript com ';', senão o snippets não funciona.
-sempre que for utilizar string com valor de tag html, utilize de '`'.
+Sempre feche um comando javascript com ';', senão o snippets não funciona.
+Sempre que for utilizar string com valor de tag html, utilize de '`'.
 
 ## EJS language support
 
 > Recomendo utilizar no vs code
 
-[LINK](https://marketplace.visualstudio.com/items?itemName=DigitalBrainstem.javascript-ejs-support)
+[Link da extensão](https://marketplace.visualstudio.com/items?itemName=DigitalBrainstem.javascript-ejs-support)
 
 ## Snippets
 
-| Snippet→   | Alternativa | Saida                                                                                                   |
-| ---------- | ----------- | ------------------------------------------------------------------------------------------------------- |
-| `ejs→`     | `<%`        | `<% %>` - No output tag                                                                                 |
-| `ejsout→`  | `<%=`       | `<%= %>` - Outputs HTML value                                                                           |
-| `ejsesc→`  | `<%-`       | `<%- %>` - Outputs unescaped                                                                            |
-| `ejscom→`  | `<%#`       | `<%# %>` - Comment tag                                                                                  |
-| `ejslit→`  | `<%%`       | `<%% %>` - Outputs Literal <%                                                                           |
-| `ejsinc→`  | `<%`        | `include` statement                                                                                     |
-| `ejsfor→`  | `<%`        | `for` Javascript Loop                                                                                   |
-| `ejseach→` | `<%`        | `forEach` Javascript Loop                                                                               |
-| `ejsif→`   | `<%`        | `if` Statement with condition                                                                           |
-| `ejselif→` | `<%`        | `else if` Statement - _Middle section only._ Assumes you have already written the first `if` statement. |
-| `ejselse→` | `<%`        | `else` Statement - _Middle section only._ Assumes you have already written the first `if` statement.    |
+| Snippet→   | Alternativa | Saida                          |
+| ---------- | ----------- | ------------------------------ |
+| `ejs→`     | `<%`        | `<% %>` - Sem tag de saída     |
+| `ejsout→`  | `<%=`       | `<%= %>` - Valor de saída HTML |
+| `ejsesc→`  | `<%-`       | `<%- %>` - Saídas sem escape   |
+| `ejscom→`  | `<%#`       | `<%# %>` - Tag de comentário   |
+| `ejslit→`  | `<%%`       | `<%% %>` - Saída literal <'%   |
+| `ejsinc→`  | `<%`        | `include` - statement          |
+| `ejsfor→`  | `<%`        | `for` - Loop Javascript        |
+| `ejseach→` | `<%`        | `forEach` - Loop Javascript    |
+| `ejsif→`   | `<%`        | `if` - IF Javascript           |
+| `ejselif→` | `<%`        | `else if` - Else IF Javascript |
+| `ejselse→` | `<%`        | `else` - Else Javascript       |
 
 ## ejs
 
@@ -115,13 +163,23 @@ Utilizado para fazer comentários no código.
 
 ## ejsinc
 
+Utilizado para incluir pedaços de códigos a outra página.
+
 > Código gerado pelo Snippets.
 
 ```ejs
 <% include  %>
 ```
 
+> Exemplo
+
+```ejs
+<%- include('partials/header')%>
+```
+
 ## ejsfor
+
+Simples **For** feito com interpolação.
 
 > Código gerado pelo Snippets.
 
@@ -155,6 +213,9 @@ age:40}, {name:'Raquel',age:15}, ]; %>
 
 ## ejseach
 
+Lembra muito o esquema do PHP, na hora de interpolar HTML e Javascript.
+pode ser utilizado, qualquer estrutura que trabalha sobre array.
+
 > Código gerado pelo Snippets.
 
 ```ejs
@@ -162,9 +223,6 @@ age:40}, {name:'Raquel',age:15}, ]; %>
 
 <% }) %>
 ```
-
-Lembra muito o esquema do PHP, na hora de interpolar HTML e Javascript.
-pode ser utilizado, qualquer estrutura que trabalha sobre array.
 
 > Exemplo
 
@@ -188,7 +246,13 @@ age:40}, {name:'Raquel',age:15}, ]; %>
 </table>
 ```
 
-## ejsif
+## ejsif, ejselif e ejselse
+
+Estrutura básica If, Else If e Else.
+
+> Exemplo no final
+
+### ejsif
 
 > Código gerado pelo Snippets.
 
@@ -197,7 +261,7 @@ age:40}, {name:'Raquel',age:15}, ]; %>
 <% } %>
 ```
 
-## ejselif
+### ejselif
 
 > Código gerado pelo Snippets.
 
@@ -205,7 +269,7 @@ age:40}, {name:'Raquel',age:15}, ]; %>
 <% } else if ({:condition}) { %>
 ```
 
-## ejselse
+### ejselse
 
 > Código gerado pelo Snippets.
 
@@ -213,7 +277,7 @@ age:40}, {name:'Raquel',age:15}, ]; %>
 <% } else { %>
 ```
 
-> Exemplo
+### Exemplo
 
 ```ejs
 <% let number = Math.floor(Math.random()*50);%>
