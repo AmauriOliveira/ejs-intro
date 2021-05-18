@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(cors());
 app.use(expressLayout);
 
+//app.use(express.static(path.join(__dirname, 'views', 'sell')));
 app.set('views', path.join(__dirname, 'views'));
 //app.engine('html', require('ejs').renderFile); // caso for usar .html em vez de .ejs
 //app.set('view engine', 'html');
@@ -18,6 +19,12 @@ app.set('view engine', 'ejs');
 // nome do arquivo ou view, um objeto tipo any e um callback
 app.get('/', (request, response) =>
 	response.render('index', { nome: 'Amauri' })
+);
+
+app.get('/sell', (request, response) =>
+	response.sendFile(path.join(__dirname, 'views', 'sell', 'index.html'), {
+		root: __dirname,
+	})
 );
 
 app.get('/about', (request, response) => response.render('about'));
