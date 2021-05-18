@@ -1,15 +1,15 @@
 const express = require('express');
 const cors = require('cors');
-const expressLayout = require('express-ejs-layouts');
+//const expressLayout = require('express-ejs-layouts');
 const path = require('path');
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use(expressLayout);
+//app.use(expressLayout);
 
-//app.use(express.static(path.join(__dirname, 'views', 'sell')));
+app.use(express.static(path.join(__dirname, 'views', 'sell')));
 app.set('views', path.join(__dirname, 'views'));
 //app.engine('html', require('ejs').renderFile); // caso for usar .html em vez de .ejs
 //app.set('view engine', 'html');
@@ -22,9 +22,7 @@ app.get('/', (request, response) =>
 );
 
 app.get('/sell', (request, response) =>
-	response.sendFile(path.join(__dirname, 'views', 'sell', 'index.html'), {
-		root: __dirname,
-	})
+	response.render(path.join(__dirname, 'views', 'sell', 'index.ejs'))
 );
 
 app.get('/about', (request, response) => response.render('about'));
