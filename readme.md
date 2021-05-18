@@ -4,9 +4,9 @@
 
 > Aula sobre EJS, onde estou testando e aprendendo
 
-![GitHub last commit](https://img.shields.io/github/last-commit/AmauriOliveira/https://github.com/AmauriOliveira/ejs-intro)
-![license](https://img.shields.io/github/license/AmauriOliveira/https://github.com/AmauriOliveira/ejs-intro)
-![GitHub repo size](https://img.shields.io/github/repo-size/AmauriOliveira/https://github.com/AmauriOliveira/ejs-intro)
+![GitHub last commit](https://img.shields.io/github/last-commit/AmauriOliveira/ejs-intro)
+![license](https://img.shields.io/github/license/AmauriOliveira/ejs-intro)
+![GitHub repo size](https://img.shields.io/github/repo-size/AmauriOliveira/ejs-intro)
 
 ## :telescope: Visão geral
 
@@ -34,7 +34,7 @@ Contributions, issues and feature requests are welcome!
 - 🐛 Find and report issues
 - 📥 Submit PRs to help solve issues or add features
 
-Feel free to check [issues page](https://github.com/AmauriOliveira/https://github.com/AmauriOliveira/ejs-intro/issues). You can also take a look at the contributing guide.
+Feel free to check [issues page](https://github.com/AmauriOliveira/ejs-intro/issues). You can also take a look at the contributing guide.
 
 ## :bow: Author
 
