@@ -1,13 +1,13 @@
 const express = require('express');
 const cors = require('cors');
-//const expressLayout = require('express-ejs-layouts');
+const expressLayout = require('express-ejs-layouts');
 const path = require('path');
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
-//app.use(expressLayout);
+app.use(expressLayout);
 
 app.use(express.static(path.join(__dirname, 'views', 'sell')));
 app.set('views', path.join(__dirname, 'views'));
@@ -26,5 +26,6 @@ app.get('/sell', (request, response) =>
 );
 
 app.get('/about', (request, response) => response.render('about'));
+app.get('/bootstrap', (request, response) => response.render('bootstrap'));
 
 app.listen(process.env.PORT || '3000', () => console.log('🔥🚀'));
