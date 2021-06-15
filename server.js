@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(cors());
 app.use(expressLayout);
 
+app.use(express.static(path.join(__dirname, 'views', 'sell')));
 app.set('views', path.join(__dirname, 'views'));
 //app.engine('html', require('ejs').renderFile); // caso for usar .html em vez de .ejs
 //app.set('view engine', 'html');
@@ -20,6 +21,11 @@ app.get('/', (request, response) =>
 	response.render('index', { nome: 'Amauri' })
 );
 
+app.get('/sell', (request, response) =>
+	response.render(path.join(__dirname, 'views', 'sell', 'index.ejs'))
+);
+
 app.get('/about', (request, response) => response.render('about'));
+app.get('/bootstrap', (request, response) => response.render('bootstrap'));
 
 app.listen(process.env.PORT || '3000', () => console.log('🔥🚀'));
