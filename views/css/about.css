@@ -1,0 +1,55 @@
+.percentage-box {
+  border-left: 2px solid var(--color-primary);
+}
+
+.percentage-bg {
+  display: inline-block;
+  font: 16px/20px var(--font-dm-sans);
+  padding: 12px 10px;
+  margin: 7px 0px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.purple-bg {
+  background-color: var(--color-purple);
+}
+
+.light-blue-bg {
+  background-color: var(--color-light-blue);
+}
+
+.green-bg {
+  background-color: var(--color-accent);
+}
+
+.light-gray-bg {
+  border-radius: 8px;
+  background-color: var(--color-light-gray);
+}
+
+.savings {
+  font: 16px/20px var(--font-dm-sans);
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.w-10 {
+  width: 10%;
+}
+
+.w-25 {
+  width: 25%;
+}
+
+.w-65 {
+  width: 65%;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.w-100 {
+  width: 100%;
+}
